@@ -5,7 +5,9 @@
 # [target.x86_64-uwp-windows-msvc]
 # rustflags = ["-Ctarget-feature=+crt-static"]
 
-#[target.x86_64-pc-windows-msvc]
+[target.x86_64-pc-windows-msvc]
+linker = "rust-lld"
+
 [target.'cfg(all(windows, target_env = "msvc"))']
 rustflags = [
   # Set up delayloads.
