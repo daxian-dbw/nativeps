@@ -1,0 +1,9 @@
+# Copyright (C) Microsoft Corporation. All rights reserved.
+
+[package]
+name = "pal"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+cc = "1.0"
