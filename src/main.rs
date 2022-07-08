@@ -2,6 +2,7 @@ mod win_support;
 
 use ansi_term::enable_ansi_support;
 use terminal_size::{Width, Height, terminal_size};
+use std::collections::HashMap;
 use std::env;
 use std::io::{BufReader, BufRead};
 use std::process::{Command, Stdio};
@@ -17,7 +18,10 @@ fn main() {
         print_with_color(fg_yellow, "failed to get terminal size", true);
     }
 
-    print_with_color(fg_yellow, "Hello, world!", true);
+    let mut map: HashMap<String, String> = HashMap::new();
+    map.insert("managed shell".to_string(), "PowerShell".to_string());
+    map.insert("native shell".to_string(), "msh".to_string());
+    print_with_color(fg_yellow, &format!("Use HashMap: {:?}", map), true);
 
     let args: Vec<String> = env::args().collect();
     print_with_color(fg_yellow, &format!("{:?}", args), true);
