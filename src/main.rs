@@ -1,5 +1,6 @@
 mod win_support;
 
+use indexmap::IndexMap;
 use ansi_term::enable_ansi_support;
 use terminal_size::{Width, Height, terminal_size};
 use std::collections::HashMap;
@@ -18,10 +19,15 @@ fn main() {
         print_with_color(fg_yellow, "failed to get terminal size", true);
     }
 
-    let mut map: HashMap<String, String> = HashMap::new();
-    map.insert("managed shell".to_string(), "PowerShell".to_string());
-    map.insert("native shell".to_string(), "msh".to_string());
-    print_with_color(fg_yellow, &format!("Use HashMap: {:?}", map), true);
+    let mut hashmap: HashMap<String, String> = HashMap::new();
+    hashmap.insert("managed shell".to_string(), "PowerShell".to_string());
+    hashmap.insert("native shell".to_string(), "msh".to_string());
+    print_with_color(fg_yellow, &format!("Use HashMap: {:?}", hashmap), true);
+
+    let mut indexmap: IndexMap<String, String> = IndexMap::new();
+    indexmap.insert("managed shell".to_string(), "PowerShell".to_string());
+    indexmap.insert("native shell".to_string(), "msh".to_string());
+    print_with_color(fg_yellow, &format!("Use IndexMap: {:?}", hashmap), true);
 
     let args: Vec<String> = env::args().collect();
     print_with_color(fg_yellow, &format!("{:?}", args), true);
